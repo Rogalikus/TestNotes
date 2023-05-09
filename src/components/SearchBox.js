@@ -5,11 +5,12 @@ const SearchBox = ({ setSearchValue, searchValue }) => {
     setSearchValue(e.target.value);
   };
   return (
-    <div>
+    <div className="searchBox">
       <input
+        className="search"
         value={searchValue}
         onChange={searchHandler}
-        placeholder="Search"
+        placeholder="🔍︎ Search"
       ></input>
     </div>
   );

@@ -1,7 +1,13 @@
-import React, { useContext, useEffect, useRef, useState } from "react";
+import React, {
+  useCallback,
+  useContext,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 import Header from "./Header";
 import { AppContext } from "../App";
-import debounce from "lodash.debounce";
+import debounce from "lodash/debounce";
 import "../App.css";
 import { ListItem } from "./ListItem";
 
@@ -12,6 +18,11 @@ export const MainPage = () => {
   const editRef = useRef(null);
   const [canEdit, setCanEdit] = useState(true);
   const [searchValue, setSearchValue] = useState("");
+  const [lastChange, setLastChange] = useState(
+    new Date().toUTCString().slice(0, 16) +
+      " at " +
+      new Date().toLocaleTimeString().slice(0, 5)
+  );
 
   useEffect(() => {
     if (selectedNote) {
@@ -20,12 +31,25 @@ export const MainPage = () => {
     }
   }, [selectedNote, notes]);
 
+  const debounceLastChange = useCallback(
+    debounce(() => {
+      setLastChange(
+        new Date().toUTCString().slice(0, 16) +
+          " at " +
+          new Date().toLocaleTimeString().slice(0, 5)
+      );
+    }, 2000),
+    []
+  );
+
   const handleUpdateNote = (id, title, content) => {
-    updateNote({ id, title, content });
+    debounceLastChange();
+    updateNote({ id, title, content, lastChange: lastChange });
     getNotes((notes) => {
       setNotes(notes);
     });
   };
+
   const findNote = notes.find((el) => el.id === selectedNote);
 
   return (
@@ -50,6 +74,7 @@ export const MainPage = () => {
             })
             .map((note) => (
               <ListItem
+                lastChange={note.lastChange}
                 key={note.id}
                 id={note.id}
                 title={note.title}
@@ -59,9 +84,11 @@ export const MainPage = () => {
         </div>
         {selectedNote && (
           <div ref={editRef} className="content">
-            <textarea className="contentDate" readOnly>
-              {Date.now()}
-            </textarea>
+            <textarea
+              value={findNote.lastChange}
+              className="contentDate"
+              readOnly
+            ></textarea>
             <textarea
               onChange={(e) => {
                 const note = notes.find((note) => note.id === selectedNote);

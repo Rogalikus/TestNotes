@@ -1,5 +1,8 @@
 import React, { useContext, useEffect, useRef } from "react";
 import { AppContext } from "../App";
+import AddTwoToneIcon from "@mui/icons-material/AddTwoTone";
+import DeleteTwoToneIcon from "@mui/icons-material/DeleteTwoTone";
+import EditNoteTwoToneIcon from "@mui/icons-material/EditNoteTwoTone";
 
 const SideBar = ({ setCanEdit, editRef }) => {
   const {
@@ -28,7 +31,7 @@ const SideBar = ({ setCanEdit, editRef }) => {
       setNotes(notes);
     });
   };
-  // !event.target.classList.contains("content")
+
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (
@@ -51,24 +54,31 @@ const SideBar = ({ setCanEdit, editRef }) => {
   const note = notes.find((el) => el.id === selectedNote);
 
   return (
-    <div>
+    <div className="buttonsDiv">
       <button
+        className="addNoteButton"
         onClick={() => {
           const title = "Без назви";
           const content = "";
           handleAddNote(title, content);
         }}
       >
-        +
+        <AddTwoToneIcon fontSize="medium" />
       </button>
-      <button onClick={() => handleDeleteNote(note.id)}>delete</button>
       <button
+        className="deleteButton"
+        onClick={() => handleDeleteNote(note.id)}
+      >
+        <DeleteTwoToneIcon fontSize="medium" />
+      </button>
+      <button
+        className="editNoteButton"
         ref={buttonRef}
         onClick={() => {
           setCanEdit(false);
         }}
       >
-        edit
+        <EditNoteTwoToneIcon fontSize="medium" />
       </button>
     </div>
   );
