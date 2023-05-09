@@ -1,15 +1,18 @@
 import "./App.css";
-import React, { useEffect, useState } from "react";
-import Header from "./components/Header";
+import React, { createContext, useEffect, useState } from "react";
 import {
   addNote,
   deleteNote,
   getNotes,
   updateNote,
 } from "./components/api.js/api";
+import { MainPage } from "./components/MainPage";
+
+export const AppContext = createContext();
 
 function App() {
   const [notes, setNotes] = useState([]);
+  const [selectedNote, setSelectedNote] = useState();
 
   useEffect(() => {
     const request = indexedDB.open("notesDB", 1);
@@ -46,43 +49,29 @@ function App() {
     };
   }, []);
 
-  const handleUpdateNote = (id, title, content) => {
-    updateNote({ id, title, content });
-    getNotes((notes) => {
-      setNotes(notes);
-    });
-  };
-
-  const handleDeleteNote = (id) => {
-    deleteNote(id);
-    getNotes((notes) => {
-      setNotes(notes);
-    });
-  };
-
   return (
-    <div className="App">
-      <Header addNote={addNote} setNotes={setNotes} getNotes={getNotes} />
-      <div className="MainContent">
-        <div className="noteList">
-          {notes.map((note) => (
-            <div key={note.id}>
-              <h2>{note.title}</h2>
-              <p>{note.content}</p>
-              <button onClick={() => handleDeleteNote(note.id)}>Delete</button>
-            </div>
-          ))}
-        </div>
-        <div className="content">
-          <textarea className="contentText"></textarea>
-        </div>
-      </div>
-      {/* <form>
-        <input name="title" placeholder="Title" />
-        <textarea name="content" placeholder="Content" />
-        <button type="submit">Add Note</button>
-      </form> */}
-    </div>
+    <AppContext.Provider
+      value={{
+        notes,
+        addNote,
+        setNotes,
+        getNotes,
+        selectedNote,
+        deleteNote,
+        updateNote,
+        setSelectedNote,
+      }}
+      notes={notes}
+      addNote={addNote}
+      setNotes={setNotes}
+      getNotes={getNotes}
+      selectedNote={selectedNote}
+      deleteNote={deleteNote}
+      updateNote={updateNote}
+      setSelectedNote={setSelectedNote}
+    >
+      <MainPage />
+    </AppContext.Provider>
   );
 }
 

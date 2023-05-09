@@ -1,12 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
+import { AppContext } from "../App";
 
-const ListItem = () => {
+export const ListItem = ({ id, title, content }) => {
+  const { setSelectedNote } = useContext(AppContext);
+
   return (
     <div>
-      <span>title</span>
-      <div>
-        <span>date</span>
-        <span>last save</span>
+      <div onClick={() => setSelectedNote(id)} className="notes">
+        <h2>{title}</h2>
+        <div className="contentInList">{content}</div>
       </div>
     </div>
   );

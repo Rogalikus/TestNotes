@@ -2,11 +2,11 @@ import React from "react";
 import SideBar from "./Sidebar";
 import SearchBox from "./SearchBox";
 
-const Header = ({ addNote, setNotes, getNotes }) => {
+const Header = ({ setCanEdit, editRef, setSearchValue, searchValue }) => {
   return (
     <div className="Header">
-      <SideBar addNote={addNote} setNotes={setNotes} getNotes={getNotes} />
-      <SearchBox />
+      <SideBar setCanEdit={setCanEdit} editRef={editRef} />
+      <SearchBox setSearchValue={setSearchValue} searchValue={searchValue} />
     </div>
   );
 };
