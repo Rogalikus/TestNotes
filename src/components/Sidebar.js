@@ -25,11 +25,14 @@ const SideBar = ({ setCanEdit, editRef }) => {
   };
 
   const handleDeleteNote = (id) => {
-    setSelectedNote(null);
-    deleteNote(id);
-    getNotes((notes) => {
-      setNotes(notes);
-    });
+    if (id) {
+      setSelectedNote(null);
+      deleteNote(id);
+      getNotes((notes) => {
+        setNotes(notes);
+      });
+    }
+    return false;
   };
 
   useEffect(() => {
@@ -49,7 +52,7 @@ const SideBar = ({ setCanEdit, editRef }) => {
     return () => {
       document.body.removeEventListener("click", handleClickOutside);
     };
-  }, []);
+  }, [editRef, setCanEdit]);
 
   const note = notes.find((el) => el.id === selectedNote);
 
@@ -67,7 +70,7 @@ const SideBar = ({ setCanEdit, editRef }) => {
       </button>
       <button
         className="deleteButton"
-        onClick={() => handleDeleteNote(note.id)}
+        onClick={() => handleDeleteNote(selectedNote)}
       >
         <DeleteTwoToneIcon fontSize="medium" />
       </button>
