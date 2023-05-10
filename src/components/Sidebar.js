@@ -1,8 +1,9 @@
-import React, { useContext, useEffect, useRef } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import { AppContext } from "../App";
 import AddTwoToneIcon from "@mui/icons-material/AddTwoTone";
 import DeleteTwoToneIcon from "@mui/icons-material/DeleteTwoTone";
 import EditNoteTwoToneIcon from "@mui/icons-material/EditNoteTwoTone";
+import { PopUpConfirm } from "./PopUpConfirm";
 
 const SideBar = ({ setCanEdit, editRef }) => {
   const {
@@ -16,7 +17,7 @@ const SideBar = ({ setCanEdit, editRef }) => {
   } = useContext(AppContext);
 
   const buttonRef = useRef(null);
-
+  const [visiblePopUp, setVisiblePopUp] = useState(false);
   const handleAddNote = (title, content) => {
     addNote({ title, content });
     getNotes((notes) => {
@@ -38,10 +39,10 @@ const SideBar = ({ setCanEdit, editRef }) => {
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (
-        !buttonRef.current.contains(event.target) &&
         editRef &&
         editRef.current &&
-        !editRef?.current.contains(event.target)
+        !editRef?.current.contains(event.target) &&
+        !buttonRef.current.contains(event.target)
       ) {
         setCanEdit(true);
       }
@@ -58,6 +59,7 @@ const SideBar = ({ setCanEdit, editRef }) => {
 
   return (
     <div className="buttonsDiv">
+      <button className="buttonPhone">listForPhone</button>
       <button
         className="addNoteButton"
         onClick={() => {
@@ -68,9 +70,13 @@ const SideBar = ({ setCanEdit, editRef }) => {
       >
         <AddTwoToneIcon fontSize="medium" />
       </button>
+      {visiblePopUp && (
+        <PopUpConfirm title={note?.title} setVisiblePopUp={setVisiblePopUp} />
+      )}
       <button
         className="deleteButton"
-        onClick={() => handleDeleteNote(selectedNote)}
+        disabled={selectedNote ? false : true}
+        onClick={() => setVisiblePopUp(true)}
       >
         <DeleteTwoToneIcon fontSize="medium" />
       </button>
