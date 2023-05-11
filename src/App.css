@@ -4,13 +4,6 @@
   height: 100vh;
   background-color: rgb(242, 247, 252);
 }
-.Header {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-  height: 70px;
-  background-color: rgb(185, 180, 180);
-}
 .MainContent {
   display: flex;
   justify-content: space-between;
@@ -35,197 +28,20 @@
   border-radius: 10px;
   background-color: rgb(163, 153, 153);
 }
-.notes {
-  border-bottom: 3px solid rgb(211, 204, 204);
-  padding: 0px 10px 15px 20px;
-}
-.selectedNotes {
-  border-bottom: 3px solid rgb(211, 204, 204);
-  background-color: rgb(185, 180, 180);
-  padding: 0px 10px 15px 20px;
-}
-.content {
-  border-top: 3px solid rgb(211, 204, 204);
-  padding-right: 10px;
-  padding-left: 10px;
-  width: 80%;
-  height: 100%;
-}
-.contentDate {
-  display: block;
 
-  border: none;
-  margin: 0;
-  padding-top: 10px;
-  font-size: 18px;
-  font-weight: 550;
-  width: calc(100% - 15px);
-  resize: none;
-  height: 49px;
-  background-color: rgb(242, 247, 252);
-}
-.contentTitle {
-  display: block;
-  width: calc(100% - 15px);
-  font-size: 27px;
-  font-weight: bold;
-  margin: 0;
-  border: none;
-  resize: none;
-  height: 68px;
-  background-color: rgb(242, 247, 252);
-}
-.contentText {
-  border: 3px solid rgb(242, 247, 252);
-  border-top: 0px;
-  border-bottom: 0px;
-  display: block;
-  font-size: 18px;
-  font-weight: 550;
-  margin: 0;
-  padding-bottom: 0px;
-  width: calc(100% - 15px);
-  resize: none;
-  height: calc(100% - 133px);
-  background-color: rgb(242, 247, 252);
-}
-.contentInList {
-  overflow: hidden;
-  width: 150px;
-  height: 20px;
-  padding-right: 10px;
-  text-overflow: ellipsis;
-}
-.lastChangeInList {
-}
-textarea:focus {
-  outline: none;
-}
-.listInfo {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
-.buttonsDiv {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding-left: 10px;
-}
-.addNoteButton {
-  height: 35px;
-  width: 40px;
-  border-radius: 10px;
-  border: 1px solid rgb(151, 146, 146);
-}
-.deleteButton {
-  height: 35px;
-  width: 40px;
-  margin-left: 10px;
-  border-radius: 10px;
-  border: 1px solid rgb(151, 146, 146);
-}
-.editNoteButton {
-  height: 35px;
-  width: 40px;
-  margin-left: 10px;
-  border-radius: 10px;
-  border: 1px solid rgb(151, 146, 146);
-}
-.searchBox {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding-right: 10px;
-}
-.search {
-  height: 13px;
-  width: 270px;
-  border-radius: 25px;
-  border: 1px solid gray;
-  padding: 10px;
-  font-size: 18px;
-  font-weight: 550;
-}
-.search:focus {
-  outline: none;
-}
-::-webkit-input-placeholder {
-  text-align: center;
-}
-
-:-moz-placeholder {
-  text-align: center;
-}
-
-::-moz-placeholder {
-  text-align: center;
-}
-
-:-ms-input-placeholder {
-  text-align: center;
-}
-.backPopUp {
-  position: fixed;
-  z-index: 9999;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.PopUp {
-  background-color: #ffffff;
-  border-radius: 5px;
-  width: 50%;
-  max-width: 500px;
-  height: auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-}
-.PopUpWindow {
-  padding: 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-}
-.buttonPopUp {
-  padding-top: 25px;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 35px;
-}
-.confirmButton {
-  border: 3px solid rgb(164, 224, 73);
-  border-radius: 10px;
-  font-size: 13px;
-  font-weight: 600;
-  height: 40px;
-  width: 120px;
-  color: rgb(12, 143, 12);
-  background-color: rgb(255, 255, 255);
-}
-.confirmButton:hover {
-  background-color: rgb(207, 243, 204);
-}
-.cancelButton {
-  border: 3px solid red;
-  border-radius: 10px;
-  font-size: 13px;
-  font-weight: 600;
-  height: 40px;
-  width: 120px;
-  color: rgb(143, 12, 12);
-  background-color: rgb(255, 255, 255);
-}
-.cancelButton:hover {
-  background-color: rgb(247, 144, 144);
+@media (max-width: 1000px) {
+  .noteList {
+    position: fixed;
+    z-index: 9999;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(242, 247, 252);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: start;
+    overflow-y: auto;
+  }
 }

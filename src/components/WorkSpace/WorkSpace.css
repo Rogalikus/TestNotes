@@ -1,0 +1,53 @@
+.content {
+  border-top: 3px solid rgb(211, 204, 204);
+  padding-right: 10px;
+  padding-left: 10px;
+  width: 80%;
+  height: 100%;
+}
+.contentDate {
+  display: block;
+  border: none;
+  margin: 0;
+  padding-top: 10px;
+  font-size: 18px;
+  font-weight: 550;
+  width: calc(100% - 15px);
+  resize: none;
+  height: 49px;
+  background-color: rgb(242, 247, 252);
+}
+.contentTitle {
+  display: block;
+  width: calc(100% - 15px);
+  font-size: 27px;
+  font-weight: bold;
+  margin: 0;
+  border: none;
+  resize: none;
+  height: 68px;
+  background-color: rgb(242, 247, 252);
+}
+.contentText {
+  border: 3px solid rgb(242, 247, 252);
+  border-top: 0px;
+  border-bottom: 0px;
+  display: block;
+  font-size: 18px;
+  font-weight: 550;
+  margin: 0;
+  padding-bottom: 0px;
+  width: calc(100% - 15px);
+  resize: none;
+  height: calc(100% - 133px);
+  background-color: rgb(242, 247, 252);
+}
+
+textarea:focus {
+  outline: none;
+}
+@media (max-width: 1000px) {
+  .content {
+    border: none;
+  }
+}

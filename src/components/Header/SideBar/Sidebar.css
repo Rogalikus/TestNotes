@@ -1,0 +1,70 @@
+.buttonsDiv {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-left: 10px;
+}
+.addNoteButton {
+  height: 35px;
+  width: 40px;
+  border-radius: 10px;
+  border: 1px solid rgb(151, 146, 146);
+}
+.deleteButton {
+  height: 35px;
+  width: 40px;
+  margin-left: 10px;
+  border-radius: 10px;
+  border: 1px solid rgb(151, 146, 146);
+}
+.editNoteButton {
+  height: 35px;
+  width: 40px;
+  margin-left: 10px;
+  border-radius: 10px;
+  border: 1px solid rgb(151, 146, 146);
+}
+.buttonPhone {
+  display: none;
+}
+@media (max-width: 1000px) {
+  .buttonPhone {
+    display: block;
+    margin-right: 10px;
+    height: 35px;
+    width: 40px;
+    border-radius: 10px;
+    border: 1px solid rgb(151, 146, 146);
+  }
+}
+@media (max-width: 600px) {
+  .buttonsDiv {
+    height: 40px;
+    width: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-left: 45px;
+    padding-top: 15px;
+  }
+  .addNoteButton {
+    height: 35px;
+    width: 36px;
+    border-radius: 10px;
+    border: 1px solid rgb(151, 146, 146);
+  }
+  .deleteButton {
+    height: 35px;
+    width: 36px;
+    margin-left: 6px;
+    border-radius: 10px;
+    border: 1px solid rgb(151, 146, 146);
+  }
+  .editNoteButton {
+    height: 35px;
+    width: 36px;
+    margin-left: 6px;
+    border-radius: 10px;
+    border: 1px solid rgb(151, 146, 146);
+  }
+}

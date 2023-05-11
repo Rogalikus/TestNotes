@@ -1,20 +1,15 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
-import { AppContext } from "../App";
+import { AppContext } from "../../../App";
 import AddTwoToneIcon from "@mui/icons-material/AddTwoTone";
 import DeleteTwoToneIcon from "@mui/icons-material/DeleteTwoTone";
 import EditNoteTwoToneIcon from "@mui/icons-material/EditNoteTwoTone";
 import { PopUpConfirm } from "./PopUpConfirm";
+import MenuTwoToneIcon from "@mui/icons-material/MenuTwoTone";
+import "./Sidebar.css";
 
-const SideBar = ({ setCanEdit, editRef }) => {
-  const {
-    addNote,
-    setNotes,
-    getNotes,
-    selectedNote,
-    deleteNote,
-    setSelectedNote,
-    notes,
-  } = useContext(AppContext);
+const SideBar = ({ setCanEdit, editRef, setShowNoteList }) => {
+  const { addNote, setNotes, getNotes, selectedNote, notes } =
+    useContext(AppContext);
 
   const buttonRef = useRef(null);
   const [visiblePopUp, setVisiblePopUp] = useState(false);
@@ -23,17 +18,6 @@ const SideBar = ({ setCanEdit, editRef }) => {
     getNotes((notes) => {
       setNotes(notes);
     });
-  };
-
-  const handleDeleteNote = (id) => {
-    if (id) {
-      setSelectedNote(null);
-      deleteNote(id);
-      getNotes((notes) => {
-        setNotes(notes);
-      });
-    }
-    return false;
   };
 
   useEffect(() => {
@@ -59,7 +43,14 @@ const SideBar = ({ setCanEdit, editRef }) => {
 
   return (
     <div className="buttonsDiv">
-      <button className="buttonPhone">listForPhone</button>
+      <button
+        onClick={() => {
+          setShowNoteList(true);
+        }}
+        className="buttonPhone"
+      >
+        <MenuTwoToneIcon fontSize="medium" />
+      </button>
       <button
         className="addNoteButton"
         onClick={() => {

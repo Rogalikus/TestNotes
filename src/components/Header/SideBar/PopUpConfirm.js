@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
-import { AppContext } from "../App";
+import { AppContext } from "../../../App";
+import "./PopUp.css";
 
 export const PopUpConfirm = ({ title, setVisiblePopUp }) => {
   const { setNotes, getNotes, deleteNote, setSelectedNote, selectedNote } =

@@ -1,0 +1,35 @@
+.notes {
+  border-bottom: 3px solid rgb(211, 204, 204);
+  padding: 0px 10px 15px 20px;
+}
+.selectedNotes {
+  border-bottom: 3px solid rgb(211, 204, 204);
+  background-color: rgb(185, 180, 180);
+  padding: 0px 10px 15px 20px;
+}
+.listInfo {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.contentInList {
+  overflow: hidden;
+  width: 150px;
+  height: 20px;
+  padding-right: 10px;
+  text-overflow: ellipsis;
+}
+@media (max-width: 1000px) {
+  .notes {
+    min-width: 330px;
+  }
+  .selectedNotes {
+    min-width: 330px;
+  }
+  .listInfo {
+    gap: 20px;
+  }
+  .contentInList {
+    width: 100px;
+  }
+}
